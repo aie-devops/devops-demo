@@ -1,0 +1,31 @@
+{
+  "name": "devops-demo (Java 21)",
+  "image": "mcr.microsoft.com/devcontainers/java:21-jdk-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "none",
+      "installMaven": true,
+      "mavenVersion": "3.9.9"
+    }
+  },
+  "forwardPorts": [8080],
+  "portsAttributes": {
+    "8080": {
+      "label": "Spring Boot app",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "mvn -B dependency:go-offline",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-boot-dev-pack"
+      ],
+      "settings": {
+        "java.configuration.updateBuildConfiguration": "automatic"
+      }
+    }
+  },
+  "remoteUser": "vscode"
+}
